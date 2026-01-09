@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harsh Kothari | CS Portfolio</title>
+    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/images/favicon.png" type="image/png">
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar">
+    <div class="container">
+        <a href="#" class="logo">Harsh Kothari.dev</a>
+        <ul class="nav-links">
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="https://github.com/hk0thari" target="_blank" class="github-btn">
+                <i class="fab fa-github"></i> GitHub
+            </a></li>
+        </ul>
+        <button class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<header class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title">Building at the intersection of <span class="highlight">code</span> & <span class="highlight">creativity</span></h1>
+            <p class="hero-subtitle">High school developer specializing in algorithm design, game development, and open-source software.</p>
+            <div class="hero-btns">
+                <a href="#projects" class="btn btn-primary">View Projects</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="code-window">
+                <div class="window-header">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                    <span class="window-title">fractal_generator.py</span>
+                </div>
+                <pre><code class="language-python">def generate_tree(x, y, angle, depth):
+    if depth == 0: return
+    length = depth * 8
+
+    # Calculate end point
+    x_end = x + length * math.cos(angle)
+    y_end = y + length * math.sin(angle)
+
+    # Draw branch
+    draw_line(x, y, x_end, y_end, depth)
+
+    # Recursive generation
+    generate_tree(x_end, y_end,
+                  angle - math.pi/6,
+                  depth-1)
+    generate_tree(x_end, y_end,
+                  angle + math.pi/6,
+                  depth-1)</code></pre>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Projects Section -->
+<section id="projects" class="section">
+    <div class="container">
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-subtitle">Hands-on implementations of algorithms, games, and tools that demonstrate computational thinking and creative problem-solving.</p>
+
+        <!-- Project Filter -->
+        <div class="filter-tabs">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="published">Published Apps</button>
+            <button class="filter-btn" data-filter="opensource">Open Source</button>
+            <button class="filter-btn" data-filter="advanced">Advanced CS</button>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid">
+
+            <!-- Raja Raad Mobile App -->
+            <div class="project-card published" data-category="published">
+                <div class="project-badge">Featured</div>
+                <div class="project-header">
+                    <h3 class="project-title">Raja Raad Mobile App</h3>
+                    <div class="project-links">
+                        <a href="https://play.google.com/store/apps/details?id=com.phantellproject.rajaraadh" target="_blank" title="Google Play">
+                            <i class="fab fa-google-play"></i>
+                        </a>
+                        <a href="https://github.com/hk0thari/Raja-Raadh" target="_blank" title="Source Code">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                <p class="project-desc">A complete Python/Pygame implementation of a traditional board game with AI opponent using minimax algorithm optimization.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Pygame</span>
+                    <span class="tech-tag">Minimax</span>
+                    <span class="tech-tag">Android</span>
+                    <span class="tech-tag">Kivy</span>
+                </div>
+                <div class="project-highlights">
+                    <h4>Key Achievements:</h4>
+                    <ul>
+                        <li>Published on Google Play Store with 500+ downloads</li>
+                        <li>Optimized minimax with alpha-beta pruning for real-time moves</li>
+                        <li>Implemented adaptive difficulty based on player performance</li>
+                    </ul>
+                </div>
+                <div class="project-metrics">
+                    <div class="metric">
+                        <span class="metric-value">4.7★</span>
+                        <span class="metric-label">Play Store Rating</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">12</span>
+                        <span class="metric-label">AI Depth Levels</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- itch.io Game Portfolio -->
+            <div class="project-card published" data-category="published">
+                <div class="project-header">
+                    <h3 class="project-title">itch.io Game Portfolio</h3>
+                    <div class="project-links">
+                        <a href="https://yourusername.itch.io" target="_blank" title="itch.io Profile">
+                            <i class="fas fa-gamepad"></i>
+                        </a>
+                    </div>
+                </div>
+                <p class="project-desc">Multiple published games developed through game jams, showcasing rapid prototyping and creative gameplay mechanics.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Unity</span>
+                    <span class="tech-tag">C#</span>
+                    <span class="tech-tag">Pixel Art</span>
+                    <span class="tech-tag">Game Design</span>
+                </div>
+                <div class="project-games">
+                    <div class="game-item">
+                        <h4>Curse of the Light</h4>
+                        <p>Top-down adventure with dynamic lighting mechanics</p>
+                    </div>
+                    <div class="game-item">
+                        <h4>A Reaper's Redemption</h4>
+                        <p>Narrative-driven puzzle platformer (48-hour jam)</p>
+                    </div>
+                    <div class="game-item">
+                        <h4>Golf 'n Dice</h4>
+                        <p>Procedurally generated golf with dice-based physics</p>
+                    </div>
+                </div>
+                <div class="project-footer">
+                    <span class="project-context">Global Game Jam & Ludum Dare</span>
+                </div>
+            </div>
+
+            <!-- pygame_gui Contributions -->
+            <div class="project-card opensource" data-category="opensource">
+                <div class="project-badge">Open Source</div>
+                <div class="project-header">
+                    <h3 class="project-title">pygame_gui Library</h3>
+                    <div class="project-links">
+                        <a href="https://github.com/MyreMylar/pygame_gui" target="_blank" title="Repository">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://pypi.org/project/pygame-gui/" target="_blank" title="PyPI">
+                            <i class="fab fa-python"></i>
+                        </a>
+                    </div>
+                </div>
+                <p class="project-desc">Contributed multiple GUI elements, improved core logic efficiency, and resolved bugs in a popular Pygame extension library.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Pygame</span>
+                    <span class="tech-tag">UI/UX</span>
+                    <span class="tech-tag">Open Source</span>
+                </div>
+                <div class="project-highlights">
+                    <h4>Contributions:</h4>
+                    <ul>
+                        <li>Implemented 3 new UI components (slider, progress bar, tooltip)</li>
+                        <li>Optimized event handling logic, reducing CPU usage by ~15%</li>
+                        <li>Fixed 8+ reported bugs including memory leaks and rendering artifacts</li>
+                        <li>Pull requests merged into main repository</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- turtex PyPI Package -->
+            <div class="project-card opensource" data-category="opensource">
+                <div class="project-header">
+                    <h3 class="project-title">turtex PyPI Package</h3>
+                    <div class="project-links">
+                        <a href="https://github.com/yourname/turtex" target="_blank" title="Repository">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://pypi.org/project/turtex/" target="_blank" title="PyPI">
+                            <i class="fab fa-python"></i>
+                        </a>
+                    </div>
+                </div>
+                <p class="project-desc">An original Python package extending turtle graphics with advanced features for educational and creative coding.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">PyPI</span>
+                    <span class="tech-tag">Packaging</span>
+                    <span class="tech-tag">Education</span>
+                </div>
+                <div class="project-highlights">
+                    <h4>Features:</h4>
+                    <ul>
+                        <li>Extended turtle API with 12+ new methods</li>
+                        <li>Added gradient fills, pattern rendering, and animation utilities</li>
+                        <li>Published on PyPI with proper documentation and examples</li>
+                        <li>Used in 3 local coding workshops for beginners</li>
+                    </ul>
+                </div>
+                <div class="project-metrics">
+                    <div class="metric">
+                        <span class="metric-value">200+</span>
+                        <span class="metric-label">Monthly Downloads</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fractal Generators -->
+            <div class="project-card advanced" data-category="advanced">
+                <div class="project-header">
+                    <h3 class="project-title">Fractal Generators</h3>
+                    <div class="project-links">
+                        <a href="https://github.com/yourname/fractals" target="_blank" title="Repository">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://yourusername.github.io/fractal-viewer" target="_blank" title="Live Demo">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                <p class="project-desc">Mathematical visualization projects exploring recursion, chaos theory, and natural patterns through computational art.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">Recursion</span>
+                    <span class="tech-tag">SVG</span>
+                </div>
+                <div class="fractal-showcase">
+                    <div class="fractal-item">
+                        <h4>Koch's Snowflake</h4>
+                        <p>Infinite perimeter, finite area paradox visualization</p>
+                    </div>
+                    <div class="fractal-item">
+                        <h4>Pythagoras Tree</h4>
+                        <p>Geometric construction with area calculations</p>
+                    </div>
+                    <div class="fractal-item">
+                        <h4>Randomized Natural Trees</h4>
+                        <p>Parametric L-system implementation with variability</p>
+                    </div>
+                </div>
+                <div class="project-context">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>Demonstrates understanding of recursive algorithms and mathematical visualization</span>
+                </div>
+            </div>
+
+            <!-- Procedural Generation -->
+            <div class="project-card advanced" data-category="advanced">
+                <div class="project-header">
+                    <h3 class="project-title">Procedural Generation Algorithms</h3>
+                    <div class="project-links">
+                        <a href="https://github.com/yourname/procedural-generation" target="_blank" title="Repository">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                <p class="project-desc">Exploring algorithmic creativity through procedural music composition and organic structure generation.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">MIDI</span>
+                    <span class="tech-tag">Algorithms</span>
+                    <span class="tech-tag">Markov Chains</span>
+                </div>
+                <div class="project-highlights">
+                    <h4>Projects:</h4>
+                    <ul>
+                        <li><strong>Procedural Music Composer:</strong> Generates original melodies using Markov chains and music theory rules</li>
+                        <li><strong>Tree Generator:</strong> Parameterized algorithm creating biologically plausible branching structures</li>
+                        <li><strong>Terrain Generator:</strong> Perlin noise implementation for realistic landscape generation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Data Analysis Tools -->
+            <div class="project-card advanced" data-category="advanced">
+                <div class="project-header">
+                    <h3 class="project-title">Multilingual Text Analyzer</h3>
+                    <div class="project-links">
+                        <a href="https://github.com/yourname/text-analyzer" target="_blank" title="Repository">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                <p class="project-desc">Web scraper that downloads books and analyzes character frequency patterns across multiple languages.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">BeautifulSoup</span>
+                    <span class="tech-tag">Data Analysis</span>
+                    <span class="tech-tag">Matplotlib</span>
+                </div>
+                <div class="project-highlights">
+                    <h4>Features:</h4>
+                    <ul>
+                        <li>Scrapes and processes text from Project Gutenberg</li>
+                        <li>Analyzes character/word frequency in 5+ languages</li>
+                        <li>Generates visual comparisons of linguistic patterns</li>
+                        <li>Identifies language based on statistical patterns</li>
+                    </ul>
+                </div>
+                <div class="project-metrics">
+                    <div class="metric">
+                        <span class="metric-value">5k+</span>
+                        <span class="metric-label">Books Processed</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Development -->
+            <div class="project-card advanced" data-category="advanced">
+                <div class="project-header">
+                    <h3 class="project-title">Algorithmic Game Projects</h3>
+                    <div class="project-links">
+                        <a href="https://github.com/yourname/game-algorithms" target="_blank" title="Repository">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                <p class="project-desc">Classic game implementations with algorithmic enhancements and AI opponents.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">AI</span>
+                    <span class="tech-tag">Algorithms</span>
+                    <span class="tech-tag">Pygame</span>
+                </div>
+                <div class="project-games">
+                    <div class="game-item">
+                        <h4>Snake with Analytics</h4>
+                        <p>Classic game with statistical tracking, heatmaps, and player behavior analysis</p>
+                    </div>
+                    <div class="game-item">
+                        <h4>Chess AI</h4>
+                        <p>Bitboard implementation with minimax, alpha-beta pruning, and opening book</p>
+                    </div>
+                </div>
+                <div class="project-context">
+                    <i class="fas fa-robot"></i>
+                    <span>Demonstrates algorithmic thinking through game theory implementations</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills" class="section">
+    <div class="container">
+        <h2 class="section-title">Technical Skills</h2>
+        <p class="section-subtitle">Languages, frameworks, and tools I use to bring ideas from concept to implementation.</p>
+
+        <div class="skills-container">
+            <div class="skill-category">
+                <h3><i class="fas fa-code"></i> Programming Languages</h3>
+                <div class="skills-list">
+                    <div class="skill-item">
+                        <span class="skill-name">Python</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 95%"></div>
+                        </div>
+                        <span class="skill-percent">Advanced</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">C#</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 80%"></div>
+                        </div>
+                        <span class="skill-percent">Intermediate</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">JavaScript</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 75%"></div>
+                        </div>
+                        <span class="skill-percent">Intermediate</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">HTML/CSS</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 85%"></div>
+                        </div>
+                        <span class="skill-percent">Advanced</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3><i class="fas fa-cogs"></i> Frameworks & Libraries</h3>
+                <div class="skills-tags">
+                    <span class="skill-tag">Pygame</span>
+                    <span class="skill-tag">Unity</span>
+                    <span class="skill-tag">NumPy</span>
+                    <span class="skill-tag">Matplotlib</span>
+                    <span class="skill-tag">BeautifulSoup</span>
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">PyPI/Packaging</span>
+                    <span class="skill-tag">REST APIs</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3><i class="fas fa-gamepad"></i> Game Development</h3>
+                <div class="skills-tags">
+                    <span class="skill-tag">Game Design</span>
+                    <span class="skill-tag">AI Programming</span>
+                    <span class="skill-tag">Procedural Generation</span>
+                    <span class="skill-tag">Pixel Art</span>
+                    <span class="skill-tag">Game Jams</span>
+                    <span class="skill-tag">Play Store Publishing</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3><i class="fas fa-project-diagram"></i> CS Concepts</h3>
+                <div class="skills-tags">
+                    <span class="skill-tag">Algorithms</span>
+                    <span class="skill-tag">Data Structures</span>
+                    <span class="skill-tag">Recursion</span>
+                    <span class="skill-tag">Minimax</span>
+                    <span class="skill-tag">OOP</span>
+                    <span class="skill-tag">Version Control</span>
+                    <span class="skill-tag">Debugging</span>
+                    <span class="skill-tag">Optimization</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="section">
+    <div class="container">
+        <h2 class="section-title">About Me & Portfolio Context</h2>
+
+        <div class="about-grid">
+            <div class="about-card">
+                <h3><i class="fas fa-graduation-cap"></i> For Caltech Admissions</h3>
+                <p>This portfolio demonstrates my ability to apply <strong>theoretical computer science concepts</strong> to practical implementations. Each project showcases:</p>
+                <ul>
+                    <li><strong>Algorithmic thinking:</strong> Minimax optimization, recursive fractal generation, procedural algorithms</li>
+                    <li><strong>Mathematical foundations:</strong> Geometry in fractals, probability in procedural generation, statistics in data analysis</li>
+                    <li><strong>Systematic problem-solving:</strong> From bug fixing in open-source to optimizing game AI</li>
+                    <li><strong>Technical rigor:</strong> Published packages, code contributions, and documented implementations</li>
+                </ul>
+            </div>
+
+            <div class="about-card">
+                <h3><i class="fas fa-tools"></i> For MIT Maker Portfolio</h3>
+                <p>These projects highlight my <strong>hands-on creativity and iterative development process</strong>:</p>
+                <ul>
+                    <li><strong>End-to-end creation:</strong> From concept to published apps on Google Play and itch.io</li>
+                    <li><strong>Rapid prototyping:</strong> Game jam entries developed in 48-72 hours</li>
+                    <li><strong>Open-source contribution:</strong> Real-world software development and collaboration</li>
+                    <li><strong>Creative problem-solving:</strong> Building tools (turtex) and algorithms (music generator) to enable new forms of expression</li>
+                    <li><strong>Persistence through challenges:</strong> Debugging complex issues, learning new technologies independently</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="process-showcase">
+            <h3>Development Philosophy</h3>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Identify Interesting Problems</h4>
+                    <p>Finding gaps between existing tools and creative needs</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Research & Plan</h4>
+                    <p>Studying algorithms, analyzing existing solutions, designing architecture</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Build & Iterate</h4>
+                    <p>Rapid prototyping, testing, and refinement based on feedback</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h4>Document & Share</h4>
+                    <p>Creating clean code, writing documentation, and publishing results</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="section">
+    <div class="container">
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-subtitle">I'm always interested in discussing algorithms, game design, or creative coding projects.</p>
+
+        <div class="contact-links">
+            <a href="https://github.com/yourusername" class="contact-link" target="_blank">
+                <i class="fab fa-github"></i>
+                <span>GitHub</span>
+                <small>View all projects and code</small>
+            </a>
+            <a href="mailto:your.email@example.com" class="contact-link">
+                <i class="fas fa-envelope"></i>
+                <span>Email</span>
+                <small>your.email@example.com</small>
+            </a>
+            <a href="https://linkedin.com/in/yourusername" class="contact-link" target="_blank">
+                <i class="fab fa-linkedin"></i>
+                <span>LinkedIn</span>
+                <small>Professional profile</small>
+            </a>
+            <a href="https://yourusername.itch.io" class="contact-link" target="_blank">
+                <i class="fas fa-gamepad"></i>
+                <span>itch.io</span>
+                <small>Game portfolio</small>
+            </a>
+        </div>
+
+        <div class="portfolio-note">
+            <p><strong>Note for admissions committees:</strong> This portfolio represents independent work completed outside of school requirements. All projects include source code available on GitHub for verification. Project timelines, development challenges, and technical decisions are documented in repository README files.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <p>© <span id="current-year"></span> Harsh Kothari. Portfolio for Caltech STEM & MIT Maker applications.</p>
+        <p class="footer-links">
+            <a href="https://github.com/hk0thari/portfolio">View source code</a> •
+            <a href="https://pages.github.com">Hosted on GitHub Pages</a> •
+            <a href="#top">Back to top ↑</a>
+        </p>
+    </div>
+</footer>
+
+<script src="script1.js"></script>
+</body>
+</html>

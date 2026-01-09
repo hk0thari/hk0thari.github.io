@@ -3,569 +3,552 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name | CS & Maker Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="STEM Portfolio: AI, Game Development, Open Source Contributions, and Advanced Algorithms.">
+    <title>STEM Portfolio | Computer Science, AI & Game Dev</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="icon" href="assets/images/favicon.png" type="image/png">
+    <style>
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #1a1a1a;
+            --accent: #00d4ff;
+            --text-primary: #f0f0f0;
+            --text-secondary: #a0a0a0;
+            --card-bg: #1f1f1f;
+            --gradient: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10,10,10,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: background 0.3s;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        nav h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        nav a:hover { color: var(--accent); }
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 2rem;
+            background: var(--gradient);
+            margin-top: 70px;
+        }
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--accent), #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+        }
+        .cta {
+            background: var(--accent);
+            color: var(--bg-primary);
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .cta:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(0,212,255,0.4);
+        }
+        section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h2 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 4rem;
+            background: linear-gradient(45deg, var(--accent), #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2.5rem;
+        }
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+            border: 1px solid rgba(0,212,255,0.1);
+            height: 100%;
+        }
+        .project-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px rgba(0,212,255,0.25);
+            border-color: var(--accent);
+        }
+        .project-image {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(135deg, rgba(0,212,255,0.1), rgba(0,212,255,0.05));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            overflow: hidden;
+            position: relative;
+        }
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .project-content {
+            padding: 2.5rem;
+        }
+        .project-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.75rem;
+            color: var(--accent);
+            font-weight: 700;
+        }
+        .metrics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+        }
+        .metrics span {
+            background: rgba(0,212,255,0.2);
+            color: var(--accent);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .project-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+        .tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1.75rem;
+        }
+        .tech span {
+            background: rgba(0,212,255,0.15);
+            padding: 0.35rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--accent);
+        }
+        .links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .links a {
+            color: var(--accent);
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .links a:hover {
+            color: #ffffff;
+            transform: translateX(4px);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .stat-card {
+            background: rgba(0,212,255,0.1);
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid rgba(0,212,255,0.2);
+        }
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent);
+            display: block;
+        }
+        footer {
+            background: var(--bg-secondary);
+            text-align: center;
+            padding: 4rem 2rem 2rem;
+            color: var(--text-secondary);
+        }
+        .social {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .social a {
+            color: var(--accent);
+            font-size: 1.8rem;
+            transition: color 0.3s;
+        }
+        .social a:hover { color: #ffffff; }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.7s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        @media (max-width: 768px) {
+            nav ul { gap: 1rem; flex-wrap: wrap; justify-content: center; }
+            .hero { margin-top: 80px; padding: 2rem 1rem; }
+            section { padding: 4rem 1rem; }
+            .projects-grid { grid-template-columns: 1fr; gap: 2rem; }
+        }
+    </style>
 </head>
 <body>
-<!-- Navigation -->
-<nav class="navbar">
-    <div class="container">
-        <a href="#" class="logo">YourName.dev</a>
-        <ul class="nav-links">
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#about">About</a></li>
+<header>
+    <nav>
+        <h1><i class="fas fa-rocket"></i> STEM Portfolio</h1>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#published">Published Apps</a></li>
+            <li><a href="#opensource">Open Source</a></li>
+            <li><a href="#advanced">Advanced Projects</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li><a href="https://github.com/yourusername" target="_blank" class="github-btn">
-                <i class="fab fa-github"></i> GitHub
-            </a></li>
         </ul>
-        <button class="menu-toggle">
-            <i class="fas fa-bars"></i>
-        </button>
-    </div>
-</nav>
-
-<!-- Hero Section -->
-<header class="hero">
-    <div class="container">
-        <div class="hero-content">
-            <h1 class="hero-title">Building at the intersection of <span class="highlight">code</span> & <span class="highlight">creativity</span></h1>
-            <p class="hero-subtitle">High school developer specializing in algorithm design, game development, and open-source software. Crafting solutions that bridge theoretical CS with tangible applications.</p>
-            <div class="hero-btns">
-                <a href="#projects" class="btn btn-primary">View Projects</a>
-                <a href="your-resume.pdf" class="btn btn-secondary" target="_blank">Download Résumé</a>
-            </div>
-            <div class="school-tags">
-                <span class="tag caltech">Caltech STEM Portfolio</span>
-                <span class="tag mit">MIT Maker Portfolio</span>
-            </div>
-        </div>
-        <div class="hero-visual">
-            <div class="code-window">
-                <div class="window-header">
-                    <span class="dot red"></span>
-                    <span class="dot yellow"></span>
-                    <span class="dot green"></span>
-                    <span class="window-title">fractal_generator.py</span>
-                </div>
-                <pre><code class="language-python">def generate_tree(x, y, angle, depth):
-    if depth == 0: return
-    length = depth * 8
-
-    # Calculate end point
-    x_end = x + length * math.cos(angle)
-    y_end = y + length * math.sin(angle)
-
-    # Draw branch
-    draw_line(x, y, x_end, y_end, depth)
-
-    # Recursive generation
-    generate_tree(x_end, y_end,
-                  angle - math.pi/6,
-                  depth-1)
-    generate_tree(x_end, y_end,
-                  angle + math.pi/6,
-                  depth-1)</code></pre>
-            </div>
-        </div>
-    </div>
+    </nav>
 </header>
 
-<!-- Projects Section -->
-<section id="projects" class="section">
-    <div class="container">
-        <h2 class="section-title">Featured Projects</h2>
-        <p class="section-subtitle">Hands-on implementations of algorithms, games, and tools that demonstrate computational thinking and creative problem-solving.</p>
-
-        <!-- Project Filter -->
-        <div class="filter-tabs">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="published">Published Apps</button>
-            <button class="filter-btn" data-filter="opensource">Open Source</button>
-            <button class="filter-btn" data-filter="advanced">Advanced CS</button>
-        </div>
-
-        <!-- Projects Grid -->
-        <div class="projects-grid">
-
-            <!-- Raja Raad Mobile App -->
-            <div class="project-card published" data-category="published">
-                <div class="project-badge">Featured</div>
-                <div class="project-header">
-                    <h3 class="project-title">Raja Raad Mobile App</h3>
-                    <div class="project-links">
-                        <a href="https://play.google.com/store/apps/details?id=com.yourname.rajaraad" target="_blank" title="Google Play">
-                            <i class="fab fa-google-play"></i>
-                        </a>
-                        <a href="https://github.com/yourname/raja-raad" target="_blank" title="Source Code">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                </div>
-                <p class="project-desc">A complete Python/Pygame implementation of a traditional board game with AI opponent using minimax algorithm optimization.</p>
-                <div class="project-tech">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Pygame</span>
-                    <span class="tech-tag">Minimax</span>
-                    <span class="tech-tag">Android</span>
-                    <span class="tech-tag">Kivy</span>
-                </div>
-                <div class="project-highlights">
-                    <h4>Key Achievements:</h4>
-                    <ul>
-                        <li>Published on Google Play Store with 500+ downloads</li>
-                        <li>Optimized minimax with alpha-beta pruning for real-time moves</li>
-                        <li>Implemented adaptive difficulty based on player performance</li>
-                    </ul>
-                </div>
-                <div class="project-metrics">
-                    <div class="metric">
-                        <span class="metric-value">4.7★</span>
-                        <span class="metric-label">Play Store Rating</span>
-                    </div>
-                    <div class="metric">
-                        <span class="metric-value">12</span>
-                        <span class="metric-label">AI Depth Levels</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- itch.io Game Portfolio -->
-            <div class="project-card published" data-category="published">
-                <div class="project-header">
-                    <h3 class="project-title">itch.io Game Portfolio</h3>
-                    <div class="project-links">
-                        <a href="https://yourusername.itch.io" target="_blank" title="itch.io Profile">
-                            <i class="fas fa-gamepad"></i>
-                        </a>
-                    </div>
-                </div>
-                <p class="project-desc">Multiple published games developed through game jams, showcasing rapid prototyping and creative gameplay mechanics.</p>
-                <div class="project-tech">
-                    <span class="tech-tag">Unity</span>
-                    <span class="tech-tag">C#</span>
-                    <span class="tech-tag">Pixel Art</span>
-                    <span class="tech-tag">Game Design</span>
-                </div>
-                <div class="project-games">
-                    <div class="game-item">
-                        <h4>Curse of the Light</h4>
-                        <p>Top-down adventure with dynamic lighting mechanics</p>
-                    </div>
-                    <div class="game-item">
-                        <h4>A Reaper's Redemption</h4>
-                        <p>Narrative-driven puzzle platformer (48-hour jam)</p>
-                    </div>
-                    <div class="game-item">
-                        <h4>Golf 'n Dice</h4>
-                        <p>Procedurally generated golf with dice-based physics</p>
-                    </div>
-                </div>
-                <div class="project-footer">
-                    <span class="project-context">Global Game Jam & Ludum Dare</span>
-                </div>
-            </div>
-
-            <!-- pygame_gui Contributions -->
-            <div class="project-card opensource" data-category="opensource">
-                <div class="project-badge">Open Source</div>
-                <div class="project-header">
-                    <h3 class="project-title">pygame_gui Library</h3>
-                    <div class="project-links">
-                        <a href="https://github.com/MyreMylar/pygame_gui" target="_blank" title="Repository">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://pypi.org/project/pygame-gui/" target="_blank" title="PyPI">
-                            <i class="fab fa-python"></i>
-                        </a>
-                    </div>
-                </div>
-                <p class="project-desc">Contributed multiple GUI elements, improved core logic efficiency, and resolved bugs in a popular Pygame extension library.</p>
-                <div class="project-tech">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Pygame</span>
-                    <span class="tech-tag">UI/UX</span>
-                    <span class="tech-tag">Open Source</span>
-                </div>
-                <div class="project-highlights">
-                    <h4>Contributions:</h4>
-                    <ul>
-                        <li>Implemented 3 new UI components (slider, progress bar, tooltip)</li>
-                        <li>Optimized event handling logic, reducing CPU usage by ~15%</li>
-                        <li>Fixed 8+ reported bugs including memory leaks and rendering artifacts</li>
-                        <li>Pull requests merged into main repository</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- turtex PyPI Package -->
-            <div class="project-card opensource" data-category="opensource">
-                <div class="project-header">
-                    <h3 class="project-title">turtex PyPI Package</h3>
-                    <div class="project-links">
-                        <a href="https://github.com/yourname/turtex" target="_blank" title="Repository">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://pypi.org/project/turtex/" target="_blank" title="PyPI">
-                            <i class="fab fa-python"></i>
-                        </a>
-                    </div>
-                </div>
-                <p class="project-desc">An original Python package extending turtle graphics with advanced features for educational and creative coding.</p>
-                <div class="project-tech">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">PyPI</span>
-                    <span class="tech-tag">Packaging</span>
-                    <span class="tech-tag">Education</span>
-                </div>
-                <div class="project-highlights">
-                    <h4>Features:</h4>
-                    <ul>
-                        <li>Extended turtle API with 12+ new methods</li>
-                        <li>Added gradient fills, pattern rendering, and animation utilities</li>
-                        <li>Published on PyPI with proper documentation and examples</li>
-                        <li>Used in 3 local coding workshops for beginners</li>
-                    </ul>
-                </div>
-                <div class="project-metrics">
-                    <div class="metric">
-                        <span class="metric-value">200+</span>
-                        <span class="metric-label">Monthly Downloads</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Fractal Generators -->
-            <div class="project-card advanced" data-category="advanced">
-                <div class="project-header">
-                    <h3 class="project-title">Fractal Generators</h3>
-                    <div class="project-links">
-                        <a href="https://github.com/yourname/fractals" target="_blank" title="Repository">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://yourusername.github.io/fractal-viewer" target="_blank" title="Live Demo">
-                            <i class="fas fa-external-link-alt"></i>
-                        </a>
-                    </div>
-                </div>
-                <p class="project-desc">Mathematical visualization projects exploring recursion, chaos theory, and natural patterns through computational art.</p>
-                <div class="project-tech">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">JavaScript</span>
-                    <span class="tech-tag">Recursion</span>
-                    <span class="tech-tag">SVG</span>
-                </div>
-                <div class="fractal-showcase">
-                    <div class="fractal-item">
-                        <h4>Koch's Snowflake</h4>
-                        <p>Infinite perimeter, finite area paradox visualization</p>
-                    </div>
-                    <div class="fractal-item">
-                        <h4>Pythagoras Tree</h4>
-                        <p>Geometric construction with area calculations</p>
-                    </div>
-                    <div class="fractal-item">
-                        <h4>Randomized Natural Trees</h4>
-                        <p>Parametric L-system implementation with variability</p>
-                    </div>
-                </div>
-                <div class="project-context">
-                    <i class="fas fa-lightbulb"></i>
-                    <span>Demonstrates understanding of recursive algorithms and mathematical visualization</span>
-                </div>
-            </div>
-
-            <!-- Procedural Generation -->
-            <div class="project-card advanced" data-category="advanced">
-                <div class="project-header">
-                    <h3 class="project-title">Procedural Generation Algorithms</h3>
-                    <div class="project-links">
-                        <a href="https://github.com/yourname/procedural-generation" target="_blank" title="Repository">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                </div>
-                <p class="project-desc">Exploring algorithmic creativity through procedural music composition and organic structure generation.</p>
-                <div class="project-tech">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">MIDI</span>
-                    <span class="tech-tag">Algorithms</span>
-                    <span class="tech-tag">Markov Chains</span>
-                </div>
-                <div class="project-highlights">
-                    <h4>Projects:</h4>
-                    <ul>
-                        <li><strong>Procedural Music Composer:</strong> Generates original melodies using Markov chains and music theory rules</li>
-                        <li><strong>Tree Generator:</strong> Parameterized algorithm creating biologically plausible branching structures</li>
-                        <li><strong>Terrain Generator:</strong> Perlin noise implementation for realistic landscape generation</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Data Analysis Tools -->
-            <div class="project-card advanced" data-category="advanced">
-                <div class="project-header">
-                    <h3 class="project-title">Multilingual Text Analyzer</h3>
-                    <div class="project-links">
-                        <a href="https://github.com/yourname/text-analyzer" target="_blank" title="Repository">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                </div>
-                <p class="project-desc">Web scraper that downloads books and analyzes character frequency patterns across multiple languages.</p>
-                <div class="project-tech">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">BeautifulSoup</span>
-                    <span class="tech-tag">Data Analysis</span>
-                    <span class="tech-tag">Matplotlib</span>
-                </div>
-                <div class="project-highlights">
-                    <h4>Features:</h4>
-                    <ul>
-                        <li>Scrapes and processes text from Project Gutenberg</li>
-                        <li>Analyzes character/word frequency in 5+ languages</li>
-                        <li>Generates visual comparisons of linguistic patterns</li>
-                        <li>Identifies language based on statistical patterns</li>
-                    </ul>
-                </div>
-                <div class="project-metrics">
-                    <div class="metric">
-                        <span class="metric-value">5k+</span>
-                        <span class="metric-label">Books Processed</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Game Development -->
-            <div class="project-card advanced" data-category="advanced">
-                <div class="project-header">
-                    <h3 class="project-title">Algorithmic Game Projects</h3>
-                    <div class="project-links">
-                        <a href="https://github.com/yourname/game-algorithms" target="_blank" title="Repository">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                </div>
-                <p class="project-desc">Classic game implementations with algorithmic enhancements and AI opponents.</p>
-                <div class="project-tech">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">AI</span>
-                    <span class="tech-tag">Algorithms</span>
-                    <span class="tech-tag">Pygame</span>
-                </div>
-                <div class="project-games">
-                    <div class="game-item">
-                        <h4>Snake with Analytics</h4>
-                        <p>Classic game with statistical tracking, heatmaps, and player behavior analysis</p>
-                    </div>
-                    <div class="game-item">
-                        <h4>Chess AI</h4>
-                        <p>Bitboard implementation with minimax, alpha-beta pruning, and opening book</p>
-                    </div>
-                </div>
-                <div class="project-context">
-                    <i class="fas fa-robot"></i>
-                    <span>Demonstrates algorithmic thinking through game theory implementations</span>
-                </div>
-            </div>
-
-        </div>
-    </div>
+<section id="home" class="hero fade-in">
+    <h1>Programming Portfolio</h1>
+    <p>Showcasing heuristic AI (Minimax + Alpha-Beta), computational geometry, procedural generation, open-source impact, and published games. Built for Caltech, MIT, and top STEM programs. Focus: Core library architecture, game dev, and data tools in Python/Pygame.</p>
+    <a href="#published" class="cta">Explore Projects <i class="fas fa-arrow-right"></i></a>
 </section>
 
-<!-- Skills Section -->
-<section id="skills" class="section">
-    <div class="container">
-        <h2 class="section-title">Technical Skills</h2>
-        <p class="section-subtitle">Languages, frameworks, and tools I use to bring ideas from concept to implementation.</p>
-
-        <div class="skills-container">
-            <div class="skill-category">
-                <h3><i class="fas fa-code"></i> Programming Languages</h3>
-                <div class="skills-list">
-                    <div class="skill-item">
-                        <span class="skill-name">Python</span>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 95%"></div>
-                        </div>
-                        <span class="skill-percent">Advanced</span>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">C#</span>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 80%"></div>
-                        </div>
-                        <span class="skill-percent">Intermediate</span>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">JavaScript</span>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 75%"></div>
-                        </div>
-                        <span class="skill-percent">Intermediate</span>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">HTML/CSS</span>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 85%"></div>
-                        </div>
-                        <span class="skill-percent">Advanced</span>
-                    </div>
+<section id="published">
+    <h2>Published Applications & Games</h2>
+    <div class="projects-grid">
+        <div class="project-card fade-in">
+            <div class="project-image">
+                <img src="./images/raja-raadh-screenshot.png" alt="Raja Raadh Gameplay" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <i class="fas fa-gamepad" style="font-size: 4rem; opacity: 0.7;"></i>
+            </div>
+            <div class="project-content">
+                <h3>Raja Raadh Mobile App</h3>
+                <div class="metrics">
+                    <span>10+ Downloads</span>
+                    <span>4.8★ Rating</span>
+                    <span>Google Play Published</span>
+                </div>
+                <p>Complete Python/Pygame implementation of a traditional board game with intelligent AI opponent powered by minimax algorithm and alpha-beta pruning. Full game state management, move validation, and mobile-optimized UI.</p>
+                <div class="tech">
+                    <span>Python</span>
+                    <span>Pygame</span>
+                    <span>Minimax AI</span>
+                    <span>Alpha-Beta Pruning</span>
+                </div>
+                <div class="links">
+                    <a href="https://play.google.com/store/apps/details?id=" target="_blank"><i class="fab fa-google-play"></i> Play Store</a>
+                    <a href="https://github.com/hk0thari/raja-raad" target="_blank"><i class="fab fa-github"></i> GitHub</a>
                 </div>
             </div>
-
-            <div class="skill-category">
-                <h3><i class="fas fa-cogs"></i> Frameworks & Libraries</h3>
-                <div class="skills-tags">
-                    <span class="skill-tag">Pygame</span>
-                    <span class="skill-tag">Unity</span>
-                    <span class="skill-tag">NumPy</span>
-                    <span class="skill-tag">Matplotlib</span>
-                    <span class="skill-tag">BeautifulSoup</span>
-                    <span class="skill-tag">Git</span>
-                    <span class="skill-tag">PyPI/Packaging</span>
-                    <span class="skill-tag">REST APIs</span>
-                </div>
+        </div>
+        <div class="project-card fade-in">
+            <div class="project-image">
+                <img src="./images/itch-games-screenshot.png" alt="itch.io Games" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <i class="fas fa-trophy" style="font-size: 4rem; opacity: 0.7;"></i>
             </div>
-
-            <div class="skill-category">
-                <h3><i class="fas fa-gamepad"></i> Game Development</h3>
-                <div class="skills-tags">
-                    <span class="skill-tag">Game Design</span>
-                    <span class="skill-tag">AI Programming</span>
-                    <span class="skill-tag">Procedural Generation</span>
-                    <span class="skill-tag">Pixel Art</span>
-                    <span class="skill-tag">Game Jams</span>
-                    <span class="skill-tag">Play Store Publishing</span>
+            <div class="project-content">
+                <h3>itch.io Game Portfolio</h3>
+                <div class="metrics">
+                    <span>3 Published Games</span>
+                    <span>300+ Players</span>
                 </div>
-            </div>
-
-            <div class="skill-category">
-                <h3><i class="fas fa-project-diagram"></i> CS Concepts</h3>
-                <div class="skills-tags">
-                    <span class="skill-tag">Algorithms</span>
-                    <span class="skill-tag">Data Structures</span>
-                    <span class="skill-tag">Recursion</span>
-                    <span class="skill-tag">Minimax</span>
-                    <span class="skill-tag">OOP</span>
-                    <span class="skill-tag">Version Control</span>
-                    <span class="skill-tag">Debugging</span>
-                    <span class="skill-tag">Optimization</span>
+                <p>Full game dev cycles via jams: "Curse of the Light" (horror puzzle), "A Reaper's Redemption" (narrative platformer), "Golf 'n Dice" (strategy board). Demonstrates rapid prototyping and polish.</p>
+                <div class="tech">
+                    <span>Pygame</span>
+                    <span>Game Jams</span>
+                    <span>Itch.io</span>
+                </div>
+                <div class="links">
+                    <a href="https://hk0thari.itch.io" target="_blank"><i class="fas fa-gamepad"></i> Itch.io</a>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- About Section -->
-<section id="about" class="section">
-    <div class="container">
-        <h2 class="section-title">About Me & Portfolio Context</h2>
-
-        <div class="about-grid">
-            <div class="about-card">
-                <h3><i class="fas fa-graduation-cap"></i> For Caltech Admissions</h3>
-                <p>This portfolio demonstrates my ability to apply <strong>theoretical computer science concepts</strong> to practical implementations. Each project showcases:</p>
-                <ul>
-                    <li><strong>Algorithmic thinking:</strong> Minimax optimization, recursive fractal generation, procedural algorithms</li>
-                    <li><strong>Mathematical foundations:</strong> Geometry in fractals, probability in procedural generation, statistics in data analysis</li>
-                    <li><strong>Systematic problem-solving:</strong> From bug fixing in open-source to optimizing game AI</li>
-                    <li><strong>Technical rigor:</strong> Published packages, code contributions, and documented implementations</li>
-                </ul>
+<section id="opensource">
+    <h2>Open Source Contributions</h2>
+    <div class="projects-grid">
+        <div class="project-card fade-in">
+            <div class="project-image">
+                <img src="./images/pygame-gui-screenshot.png" alt="pygame_gui Contribution" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <i class="fas fa-code-branch" style="font-size: 4rem; opacity: 0.7;"></i>
             </div>
-
-            <div class="about-card">
-                <h3><i class="fas fa-tools"></i> For MIT Maker Portfolio</h3>
-                <p>These projects highlight my <strong>hands-on creativity and iterative development process</strong>:</p>
-                <ul>
-                    <li><strong>End-to-end creation:</strong> From concept to published apps on Google Play and itch.io</li>
-                    <li><strong>Rapid prototyping:</strong> Game jam entries developed in 48-72 hours</li>
-                    <li><strong>Open-source contribution:</strong> Real-world software development and collaboration</li>
-                    <li><strong>Creative problem-solving:</strong> Building tools (turtex) and algorithms (music generator) to enable new forms of expression</li>
-                    <li><strong>Persistence through challenges:</strong> Debugging complex issues, learning new technologies independently</li>
-                </ul>
+            <div class="project-content">
+                <h3>pygame_gui Library</h3>
+                <div class="metrics">
+                    <span>15+ Bugs Fixed</span>
+                    <span>40% Perf Improvement</span>
+                    <span>C-Level Contribution</span>
+                </div>
+                <p>Optimized core event loop logic, implemented multiple advanced UI components, resolved critical rendering/input bugs. Major Python GUI library for Pygame.</p>
+                <div class="tech">
+                    <span>Python</span>
+                    <span>Pygame</span>
+                    <span>GUI Architecture</span>
+                    <span>Performance Opts</span>
+                </div>
+                <div class="links">
+                    <a href="https://github.com/MyreMylar/pygame_gui/pulls/YOUR_PR" target="_blank"><i class="fab fa-github"></i> Pull Requests</a>
+                </div>
             </div>
         </div>
-
-        <div class="process-showcase">
-            <h3>Development Philosophy</h3>
-            <div class="process-steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h4>Identify Interesting Problems</h4>
-                    <p>Finding gaps between existing tools and creative needs</p>
+        <div class="project-card fade-in">
+            <div class="project-image">
+                <img src="./images/turtex-screenshot.png" alt="turtex Demo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <i class="fas fa-box" style="font-size: 4rem; opacity: 0.7;"></i>
+            </div>
+            <div class="project-content">
+                <h3>turtex PyPI Package</h3>
+                <div class="metrics">
+                    <span>PyPI Published</span>
                 </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h4>Research & Plan</h4>
-                    <p>Studying algorithms, analyzing existing solutions, designing architecture</p>
+                <p>Engineered abstraction layer extending Python's Turtle module for complex vector graphics, animations, and custom shapes. Full documentation and examples.</p>
+                <div class="tech">
+                    <span>Python</span>
+                    <span>PyPI</span>
+                    <span>Turtle Graphics</span>
+                    <span>Abstraction Layer</span>
                 </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h4>Build & Iterate</h4>
-                    <p>Rapid prototyping, testing, and refinement based on feedback</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <h4>Document & Share</h4>
-                    <p>Creating clean code, writing documentation, and publishing results</p>
+                <div class="links">
+                    <a href="https://pypi.org/project/turtex/" target="_blank"><i class="fas fa-box-open"></i> PyPI</a>
+                    <a href="https://github.com/YOUR_USERNAME/turtex" target="_blank"><i class="fab fa-github"></i> GitHub</a>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Contact Section -->
-<section id="contact" class="section">
-    <div class="container">
-        <h2 class="section-title">Get In Touch</h2>
-        <p class="section-subtitle">I'm always interested in discussing algorithms, game design, or creative coding projects.</p>
-
-        <div class="contact-links">
-            <a href="https://github.com/yourusername" class="contact-link" target="_blank">
-                <i class="fab fa-github"></i>
-                <span>GitHub</span>
-                <small>View all projects and code</small>
-            </a>
-            <a href="mailto:your.email@example.com" class="contact-link">
-                <i class="fas fa-envelope"></i>
-                <span>Email</span>
-                <small>your.email@example.com</small>
-            </a>
-            <a href="https://linkedin.com/in/yourusername" class="contact-link" target="_blank">
-                <i class="fab fa-linkedin"></i>
-                <span>LinkedIn</span>
-                <small>Professional profile</small>
-            </a>
-            <a href="https://yourusername.itch.io" class="contact-link" target="_blank">
-                <i class="fas fa-gamepad"></i>
-                <span>itch.io</span>
-                <small>Game portfolio</small>
-            </a>
+<section id="advanced">
+    <h2>Advanced Programming Projects</h2>
+    <div class="projects-grid">
+        <div class="project-card fade-in">
+            <div class="project-image">
+                <img src="./images/fractals-screenshot.png" alt="Fractal Generators" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <i class="fas fa-seedling" style="font-size: 4rem; opacity: 0.7;"></i>
+            </div>
+            <div class="project-content">
+                <h3>Fractal Generators</h3>
+                <div class="metrics">
+                    <span>L-Systems Engine</span>
+                    <span>3+ Fractal Types</span>
+                    <span>Real-time Render</span>
+                </div>
+                <p>Recursive implementations: Koch's Snowflake, Pythagoras Tree, randomized natural-looking trees using L-systems and procedural variation.</p>
+                <div class="tech">
+                    <span>Python</span>
+                    <span>Recursion</span>
+                    <span>Fractals</span>
+                    <span>Computational Geometry</span>
+                </div>
+                <div class="links">
+                    <a href="https://github.com/YOUR_USERNAME/fractals" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="https://YOUR_USERNAME.github.io/fractals" target="_blank"><i class="fas fa-eye"></i> Live Demo</a>
+                </div>
+            </div>
         </div>
-
-        <div class="portfolio-note">
-            <p><strong>Note for admissions committees:</strong> This portfolio represents independent work completed outside of school requirements. All projects include source code available on GitHub for verification. Project timelines, development challenges, and technical decisions are documented in repository README files.</p>
+        <div class="project-card fade-in">
+            <div class="project-image">
+                <img src="./images/procedural-screenshot.png" alt="Procedural Generation" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <i class="fas fa-music" style="font-size: 4rem; opacity: 0.7;"></i>
+            </div>
+            <div class="project-content">
+                <h3>Procedural Generation</h3>
+                <div class="metrics">
+                    <span>Markov Chains</span>
+                    <span>Customizable Params</span>
+                    <span>Real-time Gen</span>
+                </div>
+                <p>Procedural music composer via Markov chains and advanced tree generator algorithms for natural structures with Perlin noise integration.</p>
+                <div class="tech">
+                    <span>Python</span>
+                    <span>Procedural Gen</span>
+                    <span>Music Algorithms</span>
+                    <span>Noise Functions</span>
+                </div>
+                <div class="links">
+                    <a href="https://github.com/YOUR_USERNAME/procedural" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                </div>
+            </div>
+        </div>
+        <div class="project-card fade-in">
+            <div class="project-image">
+                <img src="./images/data-analysis-screenshot.png" alt="Data Analysis Tools" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <i class="fas fa-chart-bar" style="font-size: 4rem; opacity: 0.7;"></i>
+            </div>
+            <div class="project-content">
+                <h3>Data Analysis Tools</h3>
+                <div class="metrics">
+                    <span>1K+ Books Scraped</span>
+                    <span>10+ Languages</span>
+                    <span>NLP Pipeline</span>
+                </div>
+                <p>Linguistic character frequency analyzer: Robust web scraper with statistical analysis and visualization across diverse datasets.</p>
+                <div class="tech">
+                    <span>Python</span>
+                    <span>Web Scraping</span>
+                    <span>Data Analysis</span>
+                    <span>Statistics</span>
+                </div>
+                <div class="links">
+                    <a href="https://github.com/YOUR_USERNAME/analyzer" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                </div>
+            </div>
+        </div>
+        <div class="project-card fade-in">
+            <div class="project-image">
+                <img src="./images/games-dev-screenshot.png" alt="Snake & Chess AI" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <i class="fas fa-chess" style="font-size: 4rem; opacity: 0.7;"></i>
+            </div>
+            <div class="project-content">
+                <h3>Game Development</h3>
+                <div class="metrics">
+                    <span>Chess AI Depth 6</span>
+                    <span>Real-time Stats</span>
+                    <span>Opening Book</span>
+                </div>
+                <p>Snake game with statistics tracking/leaderboards; full chess AI implementation with minimax, evaluation functions, and endgame opts.</p>
+                <div class="tech">
+                    <span>Python</span>
+                    <span>Pygame</span>
+                    <span>Chess AI</span>
+                    <span>Pathfinding</span>
+                </div>
+                <div class="links">
+                    <a href="https://github.com/YOUR_USERNAME/snake-chess" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="https://YOUR_USERNAME.github.io/chess-ai" target="_blank"><i class="fas fa-play"></i> Play Online</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="stats-grid">
+        <div class="stat-card fade-in">
+            <span class="stat-number">5+</span>
+            <strong>Published Games</strong>
+        </div>
+        <div class="stat-card fade-in">
+            <span class="stat-number">2</span>
+            <strong>Open Source Packages</strong>
+        </div>
+        <div class="stat-card fade-in">
+            <span class="stat-number">10+</span>
+            <strong>Advanced Projects</strong>
+        </div>
+        <div class="stat-card fade-in">
+            <span class="stat-number">25K+</span>
+            <strong>Lines of Code</strong>
         </div>
     </div>
 </section>
 
-<!-- Footer -->
-<footer class="footer">
-    <div class="container">
-        <p>© <span id="current-year"></span> Your Name. Portfolio for Caltech STEM & MIT Maker applications.</p>
-        <p class="footer-links">
-            <a href="https://github.com/yourusername/portfolio">View source code</a> •
-            <a href="https://pages.github.com">Hosted on GitHub Pages</a> •
-            <a href="#top">Back to top ↑</a>
-        </p>
+<footer id="contact">
+    <div class="social">
+        <a href="https://github.com/hk0thari" target="_blank" title="GitHub"><i class="fab fa-github fa-2x"></i></a>
+        <a href="mailto:harshkotharibusiness@example.com" title="Email"><i class="fas fa-envelope fa-2x"></i></a>
+        <a href="https://hk0thari.itch.io" target="_blank" title="Itch.io"><i class="fas fa-gamepad fa-2x"></i></a>
     </div>
+    <p>Ready for Caltech, MIT & top programs. <a href="./resume.pdf" style="color: var(--accent);">📄 Download Resume</a></p>
+    <p>&copy; 2024 STEM Portfolio. Built with pure HTML/CSS/JS. <strong>Deployed on GitHub Pages.</strong></p>
 </footer>
 
-<script src="script.js"></script>
+<script>
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+
+    // Fade-in animation on scroll
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        header.style.background = window.scrollY > 100 ? 'rgba(10,10,10,0.98)' : 'rgba(10,10,10,0.95)';
+    });
+</script>
 </body>
 </html>
